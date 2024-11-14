@@ -112,24 +112,3 @@ form.addEventListener('submit', function(e) {
 });
 
 
-// CARD DETAIL
-paypal.Buttons({
-  // Set up the transaction
-  createOrder: function(data, actions) {
-      return actions.order.create({
-          purchase_units: [{
-              amount: {
-                  value: '10.00' // Specify the transaction amount here
-              }
-          }]
-      });
-  },
-  // Finalize the transaction
-  onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-          // Show a success message or redirect to a success page
-          alert('Transaction completed by ' + details.payer.name.given_name);
-      });
-  }
-}).render('#paypal-button-container');
-// CARD DETAIL
